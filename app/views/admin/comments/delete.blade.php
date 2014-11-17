@@ -3,9 +3,9 @@
 {{-- Content --}}
 @section('content')
     <!-- Tabs -->
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab-general" data-toggle="tab">General</a></li>
-        </ul>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab-general" data-toggle="tab">General</a></li>
+    </ul>
     <!-- ./ tabs -->
     {{-- Delete Blog Comment Form --}}
     <form id="deleteForm" class="form-horizontal" method="post" action="@if (isset($comment)){{ URL::to('admin/comments/' . $comment->id . '/delete') }}@endif" autocomplete="off">

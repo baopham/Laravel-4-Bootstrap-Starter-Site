@@ -2,11 +2,10 @@
 
 {{-- Content --}}
 @section('content')
-
     <!-- Tabs -->
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab-general" data-toggle="tab">General</a></li>
-        </ul>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab-general" data-toggle="tab">General</a></li>
+    </ul>
     <!-- ./ tabs -->
     {{-- Delete Post Form --}}
     <form id="deleteForm" class="form-horizontal" method="post" action="@if (isset($role)){{ URL::to('admin/roles/' . $role->id . '/delete') }}@endif" autocomplete="off">

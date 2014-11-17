@@ -4,9 +4,9 @@
 @section('content')
 
     <!-- Tabs -->
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab-general" data-toggle="tab">General</a></li>
-        </ul>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab-general" data-toggle="tab">General</a></li>
+    </ul>
     <!-- ./ tabs -->
     {{-- Delete Post Form --}}
     <form id="deleteForm" class="form-horizontal" method="post" action="@if (isset($post)){{ URL::to('admin/blogs/' . $post->id . '/delete') }}@endif" autocomplete="off">
