@@ -105,6 +105,7 @@ return array(
                          'Zizaco\Confide\ConfideServiceProvider', // Confide Provider
                          'Zizaco\Entrust\EntrustServiceProvider', // Entrust Provider for roles
                          'Bllim\Datatables\DatatablesServiceProvider', // Datatables
+                         'Cviebrock\EloquentSluggable\SluggableServiceProvider', // Slugs
 
                          /* Uncomment for use in development */
                          //        'Way\Generators\GeneratorsServiceProvider', // Generators

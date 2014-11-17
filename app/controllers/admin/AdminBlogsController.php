@@ -71,7 +71,6 @@ class AdminBlogsController extends AdminController {
 
             // Update the blog post data
             $this->post->title = Input::get('title');
-            $this->post->slug = Str::slug(Input::get('title'));
             $this->post->content = Input::get('content');
             $this->post->meta_title = Input::get('meta-title');
             $this->post->meta_description = Input::get('meta-description');
@@ -140,7 +139,6 @@ class AdminBlogsController extends AdminController {
         if ($validator->passes()) {
             // Update the blog post data
             $post->title = Input::get('title');
-            $post->slug = Str::slug(Input::get('title'));
             $post->content = Input::get('content');
             $post->meta_title = Input::get('meta-title');
             $post->meta_description = Input::get('meta-description');
