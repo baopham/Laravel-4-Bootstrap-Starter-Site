@@ -11,8 +11,7 @@ class ConfideSetupUsersTable extends Migration {
     public function up()
     {
         // Creates the users table
-        Schema::create('users', function($table)
-        {
+        Schema::create('users', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('username');
@@ -26,8 +25,7 @@ class ConfideSetupUsersTable extends Migration {
 
 
         // Creates password reminders table
-        Schema::create('password_reminders', function($table)
-        {
+        Schema::create('password_reminders', function ($table) {
             $table->engine = 'InnoDB';
             $table->string('email');
             $table->string('token');

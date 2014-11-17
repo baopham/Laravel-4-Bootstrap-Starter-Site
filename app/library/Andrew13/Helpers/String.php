@@ -8,7 +8,8 @@ class String {
     /**
      * Capatilize first letter of each word of a string.
      *
-     * @param string  $value
+     * @param string $value
+     *
      * @return string
      */
     public static function title($value)
@@ -18,17 +19,16 @@ class String {
 
     /**
      * @param $value
+     *
      * @internal param $html
      * @return string
      */
     public static function tidy($value)
     {
         // Check to see if Tidy is available.
-        if(class_exists('tidy')) {
+        if (class_exists('tidy')) {
             $tidy = new tidy();
-            return  $tidy->repairString($value, array(
-                'show-body-only' => true,
-            ));
+            return $tidy->repairString($value, array('show-body-only' => true,));
         } else { // No Tidy, Time for regex and possibly a broken DOM :(
             preg_match_all('#<(?!meta|img|br|hr|input\b)\b([a-z]+)(?: .*)?(?<![/|/ ])>#iU', $value, $result);
             $openedtags = $result[1];
@@ -39,9 +39,9 @@ class String {
                 return $value;
             }
             $openedtags = array_reverse($openedtags);
-            for ($i=0; $i < $len_opened; $i++) {
+            for ($i = 0; $i < $len_opened; $i++) {
                 if (!in_array($openedtags[$i], $closedtags)) {
-                    $value .= '</'.$openedtags[$i].'>';
+                    $value .= '</' . $openedtags[$i] . '>';
                 } else {
                     unset($closedtags[array_search($openedtags[$i], $closedtags)]);
                 }
@@ -52,7 +52,7 @@ class String {
 
     public static function date(Carbon $date)
     {
-        if($date->diffInDays(Carbon::now()) < 7) {
+        if ($date->diffInDays(Carbon::now()) < 7) {
             return $date->diffForHumans();
         } else {
             return $date->toFormattedDateString();

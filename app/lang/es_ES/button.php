@@ -2,6 +2,6 @@
 
 return array(
 
-	'edit'   => 'Editar',
-	'delete' => 'Borrar'
+    'edit' => 'Editar',
+    'delete' => 'Borrar'
 );

@@ -11,28 +11,27 @@ class UserControllerTest extends BaseControllerTestCase {
     public function testShouldDoLogin()
     {
         $credentials = array(
-            'email'=>'admin@example.org',
-            'password'=>'admin',
+            'email' => 'admin@example.org',
+            'password' => 'admin',
             'csrf_token' => Session::getToken()
         );
 
-        $this->withInput( $credentials )
-            ->requestAction('POST', 'UserController@postLogin');
+        $this->withInput($credentials)->requestAction('POST', 'UserController@postLogin');
 
-        $this->assertRedirection( URL::action('BlogController@getIndex') );
+        $this->assertRedirection(URL::action('BlogController@getIndex'));
     }
 
     public function testShouldNotDoLoginWhenWrong()
     {
         $credentials = array(
-            'email'=>'someone@somewhere.com',
-            'password'=>'wrong',
-            'csrf_token' => Session::getToken());
+            'email' => 'someone@somewhere.com',
+            'password' => 'wrong',
+            'csrf_token' => Session::getToken()
+        );
 
-        $this->withInput( $credentials )
-            ->requestAction('POST', 'UserController@postLogin');
+        $this->withInput($credentials)->requestAction('POST', 'UserController@postLogin');
 
-        $this->assertRedirection( URL::action('UserController@getLogin') );
+        $this->assertRedirection(URL::action('UserController@getLogin'));
     }
 
     /**
@@ -40,14 +39,9 @@ class UserControllerTest extends BaseControllerTestCase {
      */
     public function testShouldNotDoLoginWhenTokenWrong()
     {
-        $credentials = array(
-            'email'=>'admin@example.org',
-            'password'=>'admin',
-            'csrf_token' => ''
-        );
+        $credentials = array('email' => 'admin@example.org', 'password' => 'admin', 'csrf_token' => '');
 
-        $this->withInput( $credentials )
-            ->requestAction('POST', 'UserController@postLogin');
+        $this->withInput($credentials)->requestAction('POST', 'UserController@postLogin');
     }
 
     /**
@@ -56,17 +50,16 @@ class UserControllerTest extends BaseControllerTestCase {
     public function testLoginShouldRedirectUser()
     {
         $credentials = array(
-            'email'=>'admin@example.org',
-            'password'=>'admin',
+            'email' => 'admin@example.org',
+            'password' => 'admin',
             'csrf_token' => Session::getToken()
         );
 
-        $this->withInput( $credentials )
-            ->requestAction('POST', 'UserController@postLogin');
+        $this->withInput($credentials)->requestAction('POST', 'UserController@postLogin');
 
         $this->requestAction('GET', 'UserController@getLogin');
 
-        $this->assertRedirection( URL::to('/') );
+        $this->assertRedirection(URL::to('/'));
     }
 
 }

@@ -14,7 +14,6 @@ return array(
 
     'throttle_limit' => 9,
     'throttle_time_period' => 2,
-
     /*
     |--------------------------------------------------------------------------
     | Login Throttle Field
@@ -27,7 +26,6 @@ return array(
     |
     */
     'login_cache_field' => 'email',
-
     /*
     |--------------------------------------------------------------------------
     | Form Views
@@ -47,11 +45,10 @@ return array(
     |
     |
     */
-    'login_form' =>             'confide::login',
-    'signup_form' =>            'confide::signup',
-    'forgot_password_form' =>   'confide::forgot_password',
-    'reset_password_form' =>    'confide::reset_password',
-
+    'login_form' => 'confide::login',
+    'signup_form' => 'confide::signup',
+    'forgot_password_form' => 'confide::forgot_password',
+    'reset_password_form' => 'confide::reset_password',
     /*
     |--------------------------------------------------------------------------
     | Email Views
@@ -70,7 +67,7 @@ return array(
     |
     */
 
-    'email_reset_password' =>       'confide::emails.passwordreset', // with $user and $token.
+    'email_reset_password' => 'confide::emails.passwordreset', // with $user and $token.
     'email_account_confirmation' => 'confide::emails.confirm', // with $user
 
     /*
@@ -88,7 +85,6 @@ return array(
     |
     */
     'signup_cache' => 120,
-    
     /*
     |--------------------------------------------------------------------------
     | Signup E-mail and confirmation (true or false)
@@ -111,7 +107,7 @@ return array(
     | table, otherwise they will not be able to login after the payment.
     |
     */
-    'signup_email'      => true,
-    'signup_confirm'    => true,
+    'signup_email' => true,
+    'signup_confirm' => true,
 
 );

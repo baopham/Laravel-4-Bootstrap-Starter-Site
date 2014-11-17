@@ -11,8 +11,7 @@ class EntrustSetupTables extends Migration {
     public function up()
     {
         // Creates the roles table
-        Schema::create('roles', function($table)
-        {
+        Schema::create('roles', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name');
@@ -20,8 +19,7 @@ class EntrustSetupTables extends Migration {
         });
 
         // Creates the assigned_roles (Many-to-Many relation) table
-        Schema::create('assigned_roles', function($table)
-        {
+        Schema::create('assigned_roles', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();

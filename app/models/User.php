@@ -8,15 +8,17 @@ use Carbon\Carbon;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends ConfideUser implements UserInterface, RemindableInterface{
+class User extends ConfideUser implements UserInterface, RemindableInterface {
     use HasRole;
 
     /**
      * Get user by username
+     *
      * @param $username
+     *
      * @return mixed
      */
-    public function getUserByUsername( $username )
+    public function getUserByUsername($username)
     {
         return $this->where('username', '=', $username)->first();
     }
@@ -33,11 +35,12 @@ class User extends ConfideUser implements UserInterface, RemindableInterface{
 
     /**
      * Save roles inputted from multiselect
+     *
      * @param $inputRoles
      */
     public function saveRoles($inputRoles)
     {
-        if(! empty($inputRoles)) {
+        if (!empty($inputRoles)) {
             $this->roles()->sync($inputRoles);
         } else {
             $this->roles()->detach();
@@ -52,10 +55,9 @@ class User extends ConfideUser implements UserInterface, RemindableInterface{
     {
         $roles = $this->roles;
         $roleIds = false;
-        if( !empty( $roles ) ) {
+        if (!empty($roles)) {
             $roleIds = array();
-            foreach( $roles as &$role )
-            {
+            foreach ($roles as &$role) {
                 $roleIds[] = $role->id;
             }
         }
@@ -65,23 +67,23 @@ class User extends ConfideUser implements UserInterface, RemindableInterface{
     /**
      * Redirect after auth.
      * If ifValid is set to true it will redirect a logged in user.
+     *
      * @param $redirect
      * @param bool $ifValid
+     *
      * @return mixed
      */
-    public static function checkAuthAndRedirect($redirect, $ifValid=false)
+    public static function checkAuthAndRedirect($redirect, $ifValid = false)
     {
         // Get the user information
         $user = Auth::user();
         $redirectTo = false;
 
-        if(empty($user->id) && ! $ifValid) // Not logged in redirect, set session.
+        if (empty($user->id) && !$ifValid) // Not logged in redirect, set session.
         {
             Session::put('loginRedirect', $redirect);
-            $redirectTo = Redirect::to('user/login')
-                ->with( 'notice', Lang::get('user/user.login_first') );
-        }
-        elseif(!empty($user->id) && $ifValid) // Valid user, we want to redirect.
+            $redirectTo = Redirect::to('user/login')->with('notice', Lang::get('user/user.login_first'));
+        } elseif (!empty($user->id) && $ifValid) // Valid user, we want to redirect.
         {
             $redirectTo = Redirect::to($redirect);
         }

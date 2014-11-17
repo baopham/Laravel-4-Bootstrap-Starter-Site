@@ -14,11 +14,11 @@ class RolesTableSeeder extends Seeder {
         $commentRole->name = 'comment';
         $commentRole->save();
 
-        $user = User::where('username','=','admin')->first();
-        $user->attachRole( $adminRole );
+        $user = User::where('username', '=', 'admin')->first();
+        $user->attachRole($adminRole);
 
-        $user = User::where('username','=','user')->first();
-        $user->attachRole( $commentRole );
+        $user = User::where('username', '=', 'user')->first();
+        $user->attachRole($commentRole);
     }
 
 }

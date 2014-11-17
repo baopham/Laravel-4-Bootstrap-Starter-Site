@@ -8,7 +8,7 @@ class PermissionTest extends TestCase {
     {
         $permission = Woodling::retrieve('manage_posts');
 
-        $this->assertEquals( $permission->name, 'manage_posts' );
-        $this->assertEquals( $permission->display_name, 'manage posts' );
+        $this->assertEquals($permission->name, 'manage_posts');
+        $this->assertEquals($permission->display_name, 'manage posts');
     }
 }

@@ -2,8 +2,7 @@
 
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
-class BaseControllerTestCase extends TestCase
-{
+class BaseControllerTestCase extends TestCase {
 
     /**
      * Will contain the parameters of the next request
@@ -40,14 +39,14 @@ class BaseControllerTestCase extends TestCase
      * @param string $method
      * @param string $action
      * @param array $params
+     *
      * @return BaseControllerTestCase this for method chaining.
      */
     public function requestAction($method, $action, $params = array())
     {
         $action_url = URL::action($action, $params);
 
-        if ($action_url == '')
-            trigger_error("Action '$action' does not exist");
+        if ($action_url == '') trigger_error("Action '$action' does not exist");
 
         try {
             // The following method returns Synfony's DomCrawler
@@ -66,6 +65,7 @@ class BaseControllerTestCase extends TestCase
      * method call
      *
      * @param array $params Post paratemers array.
+     *
      * @return mixed this.
      */
     public function withInput($params)
@@ -79,6 +79,7 @@ class BaseControllerTestCase extends TestCase
      * Asserts if the status code is correct
      *
      * @param $code Correct status code
+     *
      * @return void
      */
     public function assertStatusCode($code)
@@ -106,6 +107,7 @@ class BaseControllerTestCase extends TestCase
      * Asserts if page was redirected correctly
      *
      * @param $location Location where it should be redirected
+     *
      * @return void
      */
     public function assertRedirection($location = null)
@@ -123,8 +125,7 @@ class BaseControllerTestCase extends TestCase
         $this->assertTrue($isRedirection, "Last request was not a redirection. Status code was " . $statusCode);
 
         if ($location) {
-            if (!strpos($location, '://'))
-                $location = 'http://:' . $location;
+            if (!strpos($location, '://')) $location = 'http://:' . $location;
 
             $this->assertEquals($this->cleanTrailingSlash($location), $this->cleanTrailingSlash($response->headers->get('Location')), 'Page was not redirected to the correct place');
         }
@@ -134,8 +135,9 @@ class BaseControllerTestCase extends TestCase
     /**
      * Asserts if the session variable is correct
      *
-     * @param string $name  Session variable name.
+     * @param string $name Session variable name.
      * @param mixed $value Session variable value.
+     *
      * @return void.
      */
     public function assertSessionHas($name, $value = null)

@@ -8,6 +8,6 @@ class RoleTest extends TestCase {
     {
         $role = Woodling::retrieve('RoleAdmin');
 
-        $this->assertEquals( $role->name, 'admin' );
+        $this->assertEquals($role->name, 'admin');
     }
 }

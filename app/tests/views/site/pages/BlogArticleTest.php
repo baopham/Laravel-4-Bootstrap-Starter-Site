@@ -27,5 +27,4 @@ class BlogArticleTest extends BaseControllerTestCase {
     }
 
 
-
 }
